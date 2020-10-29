@@ -1,0 +1,2 @@
+module Admin::DevlogsHelper
+end

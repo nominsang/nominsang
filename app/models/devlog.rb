@@ -1,0 +1,2 @@
+class Devlog < ApplicationRecord
+end
