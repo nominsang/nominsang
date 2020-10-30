@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+  }
   namespace :admin do
     get 'dashboard/home'
-    resources :devlogs
+    resources :devlogs, :users
     root 'dashboard#home'
   end
   get 'portal/home'
@@ -9,5 +13,4 @@ Rails.application.routes.draw do
   get 'portal/blog'
   resources :devlogs
   root 'portal#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

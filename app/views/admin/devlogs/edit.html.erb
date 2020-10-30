@@ -2,5 +2,5 @@
 
 <%= render 'form', devlog: @devlog %>
 
-<%= link_to 'Show', @devlog %> |
-<%= link_to 'Back', devlogs_path %>
+<%= link_to 'Show', [:admin, @devlog] %> |
+<%= link_to 'Back', admin_devlogs_path %>

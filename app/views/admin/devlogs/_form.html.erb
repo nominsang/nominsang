@@ -1,4 +1,4 @@
-<%= form_with(model: devlog, local: true) do |form| %>
+<%= form_with(model: [:admin, devlog], local: true) do |form| %>
   <% if devlog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(devlog.errors.count, "error") %> prohibited this devlog from being saved:</h2>

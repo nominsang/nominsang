@@ -1,5 +1,6 @@
 class Admin::DevlogsController < ApplicationController
   layout 'admin'
+  before_action :authenticate_user!
   before_action :set_devlog, only: [:show, :edit, :update, :destroy]
 
   # GET /devlogs
@@ -29,7 +30,7 @@ class Admin::DevlogsController < ApplicationController
 
     respond_to do |format|
       if @devlog.save
-        format.html { redirect_to @devlog, notice: 'Devlog was successfully created.' }
+        format.html { redirect_to [:admin, @devlog], notice: 'Devlog was successfully created.' }
         format.json { render :show, status: :created, location: @devlog }
       else
         format.html { render :new }
@@ -43,7 +44,7 @@ class Admin::DevlogsController < ApplicationController
   def update
     respond_to do |format|
       if @devlog.update(devlog_params)
-        format.html { redirect_to @devlog, notice: 'Devlog was successfully updated.' }
+        format.html { redirect_to [:admin, @devlog], notice: 'Devlog was successfully updated.' }
         format.json { render :show, status: :ok, location: @devlog }
       else
         format.html { render :edit }
@@ -57,7 +58,7 @@ class Admin::DevlogsController < ApplicationController
   def destroy
     @devlog.destroy
     respond_to do |format|
-      format.html { redirect_to devlogs_url, notice: 'Devlog was successfully destroyed.' }
+      format.html { redirect_to admin_devlogs_url, notice: 'Devlog was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
